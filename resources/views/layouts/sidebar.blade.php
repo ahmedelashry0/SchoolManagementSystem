@@ -9,7 +9,7 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
                 <a href="#" class="d-block">{{ Auth::user()->name }}</a>
@@ -63,6 +63,14 @@
                             <i class="nav-icon far fa-user"></i>
                             <p>
                                 Subjects
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.class_subject.list') }}" class="nav-link @if(Request::segment(3) == 'class_subject')active @endif">
+                            <i class="nav-icon far fa-user"></i>
+                            <p>
+                                Assign Subjects
                             </p>
                         </a>
                     </li>

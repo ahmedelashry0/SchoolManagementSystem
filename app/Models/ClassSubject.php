@@ -6,12 +6,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Classroom extends Model
+class ClassSubject extends Model
 {
     use HasFactory , softDeletes;
 
+    protected $table = 'class_subject';
+
     protected $fillable = [
-        'name',
+        'class_id',
+        'subject_id',
         'status',
         'created_by',
     ];
@@ -28,10 +31,12 @@ class Classroom extends Model
 
     public function subject()
     {
-        return $this->belongsToMany(Subject::class, 'class_subject', 'class_id', 'subject_id')
-            ->withPivot(['status' , 'created_by'])
-            ->withTimestamps()
-            ->withTrashed();
+        return $this->belongsTo(Subject::class, 'subject_id');
+    }
+
+    public function classroom()
+    {
+        return $this->belongsTo(Classroom::class, 'class_id');
     }
 
     public function getEnumStatus()

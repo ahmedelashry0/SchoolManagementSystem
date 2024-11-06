@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClassController;
+use App\Http\Controllers\ClassSubjectController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SubjectController;
 use Illuminate\Support\Facades\Route;
@@ -73,6 +74,23 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::post('admin/subject/edit/{id}', [SubjectController::class , 'subject_update'])->name('admin.subject.update');
 
     Route::get('admin/subject/delete/{id}', [SubjectController::class , 'subject_delete'])->name('admin.subject.delete');
+
+    Route::get('admin/class-subject/list', [ClassSubjectController::class , 'list'])->name('admin.class_subject.list');
+
+    Route::get('admin/class-subject/assign', [ClassSubjectController::class , 'assign'])->name('admin.class_subject.assign');
+
+    Route::post('admin/class-subject/assign', [ClassSubjectController::class , 'assign_store'])->name('admin.class_subject.assign_store');
+
+    Route::get('admin/class-subject/edit/{id}', [ClassSubjectController::class , 'edit'])->name('admin.class_subject.edit');
+
+    Route::post('admin/class-subject/edit/{id}', [ClassSubjectController::class , 'update'])->name('admin.class_subject.update');
+
+    Route::get('admin/class-subject/edit_single/{id}', [ClassSubjectController::class , 'edit_single'])->name('admin.class_subject.edit_single');
+
+    Route::post('admin/class-subject/edit_single/{id}', [ClassSubjectController::class , 'update_single'])->name('admin.class_subject.update_single');
+
+    Route::get('admin/class-subject/delete/{id}', [ClassSubjectController::class , 'delete'])->name('admin.class_subject.delete');
+
 });
 
 Route::prefix('teacher')->middleware('teacher')->group(function () {

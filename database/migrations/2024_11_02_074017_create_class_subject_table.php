@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('class_id')->nullable()->constrained('classrooms')->onDelete('cascade');
             $table->foreignId('subject_id')->nullable()->constrained('subjects')->onDelete('cascade');
-            $table->enum('status', ['active', 'inactive'])->default('active');
             $table->foreignId('created_by')->constrained('users')->onDelete('cascade');
+            $table->enum('status', ['active', 'inactive'])->default('active');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -20,6 +20,14 @@ class Subject extends Model
         return $this->belongsTo(User::class, 'created_by');
     }
 
+    public function class()
+    {
+        return $this->belongsToMany(Classroom::class, 'class_subject', 'subject_id', 'class_id')
+            ->with('status' , 'created_by'  )
+            ->withTimestamps()
+            ->withTrashed();
+    }
+
     public function getEnumStatus()
     {
         return $this->enum_status;
