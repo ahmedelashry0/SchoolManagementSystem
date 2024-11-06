@@ -6,6 +6,7 @@ use App\Http\Controllers\ClassController;
 use App\Http\Controllers\ClassSubjectController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -91,16 +92,26 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     Route::get('admin/class-subject/delete/{id}', [ClassSubjectController::class , 'delete'])->name('admin.class_subject.delete');
 
+    Route::get('admin/change-password', [UserController::class , 'change_password'])->name('admin.change-password');
+
+    Route::post('admin/change-password', [UserController::class , 'update_password'])->name('admin.update-password');
+
 });
 
 Route::prefix('teacher')->middleware('teacher')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('teacher.dashboard');
+    Route::get('change-password', [UserController::class , 'change-password'])->name('teacher.change-password');
+    Route::post('change-password', [UserController::class , 'update-password'])->name('teacher.update-password');
 });
 
 Route::prefix('parent')->middleware('parent')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('parent.dashboard');
+    Route::get('change-password', [UserController::class , 'change-password'])->name('parent.change-password');
+    Route::post('change-password', [UserController::class , 'update-password'])->name('parent.update-password');
 });
 
 Route::prefix('student')->middleware('student')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('student.dashboard');
+    Route::get('change-password', [UserController::class , 'change-password'])->name('student.change-password');
+    Route::post('change-password', [UserController::class , 'update-password'])->name('student.update-password');
 });
