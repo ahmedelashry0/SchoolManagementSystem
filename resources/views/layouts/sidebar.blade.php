@@ -9,7 +9,7 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
+                <img src="{{  asset('storage/' . Auth::user()->image) }}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
                 <a href="#" class="d-block">{{ Auth::user()->name }}</a>
@@ -47,6 +47,14 @@
                             <i class="nav-icon far fa-user"></i>
                             <p>
                                 Admins
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.student.list') }}" class="nav-link @if(Request::segment(3) == 'students')active @endif">
+                            <i class="nav-icon far fa-user"></i>
+                            <p>
+                                Students
                             </p>
                         </a>
                     </li>

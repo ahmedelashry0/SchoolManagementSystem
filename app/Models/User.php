@@ -44,13 +44,21 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected $enum_status = ['active', 'inactive'];
+
     public static function  getEmailSingle($email)
     {
         return User::where('email', $email)->first();
     }
 
+
     public function classroom()
     {
         return $this->hasMany(Classroom::class, 'created_by');
+    }
+
+    public function getEnumStatus()
+    {
+        return $this->enum_status;
     }
 }

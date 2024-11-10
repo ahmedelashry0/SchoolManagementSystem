@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\ClassSubjectController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -37,9 +38,8 @@ Route::post('reset-password/{token}', [AuthController::class, 'update_password']
 
 
 Route::prefix('admin')->middleware('admin')->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name(
-        'admin.dashboard'
-    );
+    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('admin.dashboard');
+
     Route::get('/admin/list', [AdminController::class , 'list'])->name('admin.list');
 
     Route::get('/admin/add', [AdminController::class , 'add'])->name('admin.add');
@@ -52,6 +52,20 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     Route::get('/admin/delete/{id}', [AdminController::class , 'delete'])->name('admin.delete');
 
+    //Student Routes
+    Route::get('admin/student/list', [StudentController::class , 'student_list'])->name('admin.student.list');
+
+    Route::get('admin/student/add', [StudentController::class , 'student_add'])->name('admin.student.add');
+
+    Route::post('admin/student/add', [StudentController::class , 'student_store'])->name('admin.student.store');
+
+    Route::get('admin/student/edit/{id}', [StudentController::class , 'student_edit'])->name('admin.student.edit');
+
+    Route::put('admin/student/edit/{id}', [StudentController::class , 'student_update'])->name('admin.student.update');
+
+    Route::get('admin/student/delete/{id}', [StudentController::class , 'student_delete'])->name('admin.student.delete');
+
+    //Class Routes
     Route::get('admin/class/list', [ClassController::class , 'class_list'])->name('admin.class.list');
 
     Route::get('admin/class/add', [ClassController::class , 'class_add'])->name('admin.class.add');
@@ -64,6 +78,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     Route::get('admin/class/delete/{id}', [ClassController::class , 'class_delete'])->name('admin.class.delete');
 
+    //Subject Routes
     Route::get('admin/subject/list', [SubjectController::class , 'subject_list'])->name('admin.subject.list');
 
     Route::get('admin/subject/add', [SubjectController::class , 'subject_add'])->name('admin.subject.add');
@@ -76,6 +91,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     Route::get('admin/subject/delete/{id}', [SubjectController::class , 'subject_delete'])->name('admin.subject.delete');
 
+    //Class_Subject Routes
     Route::get('admin/class-subject/list', [ClassSubjectController::class , 'list'])->name('admin.class_subject.list');
 
     Route::get('admin/class-subject/assign', [ClassSubjectController::class , 'assign'])->name('admin.class_subject.assign');
@@ -92,6 +108,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     Route::get('admin/class-subject/delete/{id}', [ClassSubjectController::class , 'delete'])->name('admin.class_subject.delete');
 
+    //Change Password
     Route::get('admin/change-password', [UserController::class , 'change_password'])->name('admin.change-password');
 
     Route::post('admin/change-password', [UserController::class , 'update_password'])->name('admin.update-password');

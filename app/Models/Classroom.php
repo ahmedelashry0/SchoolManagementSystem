@@ -34,6 +34,7 @@ class Classroom extends Model
             ->withTrashed();
     }
 
+
     public function getEnumStatus()
     {
         return $this->enum_status;
