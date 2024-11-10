@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\admin\StoreUpdateAssignRequest;
 use App\Models\Classroom;
 use App\Models\ClassSubject;
 use App\Models\Subject;
-use App\Models\User;
 use Illuminate\Http\Request;
 
 class ClassSubjectController extends Controller

@@ -1,18 +1,19 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\admin\StoreStudentRequest;
+use App\Http\Controllers\Controller;
 use App\Models\Classroom;
 use App\Models\User;
+use App\Traits\Filter;
+use App\Traits\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use App\Traits\Image;
-use App\Traits\Filter;
 
 class StudentController extends Controller
 {
-    use Image , Filter;
+    use Image, Filter;
+
     public function student_list(Request $request)
     {
         $header_title = 'Student List';
@@ -33,19 +34,16 @@ class StudentController extends Controller
             'email' => 'like',
             'status' => '=',
         ];
-        $studentQuery = $this->filter(User::class, 'id' ,$request , $properties , 'desc');
-        $students = $studentQuery->where('user_type', 'student')
-            ->join('classrooms', 'users.class_id', '=', 'classrooms.id')
-            ->select('users.*', 'classrooms.name as class_name')
-            ->paginate(6);
-        return view('admin.student.list', compact('header_title' , 'students'));
+        $studentQuery = $this->filter(User::class, 'id', $request, $properties, 'desc');
+        $students = $studentQuery->where('user_type', 'student')->paginate(6);
+        return view('admin.student.list', compact('header_title', 'students' ));
     }
 
     public function student_add()
     {
         $header_title = 'Add Student';
         $classes = Classroom::where('status', 'active')->get();
-        return view('admin.student.add', compact('header_title' , 'classes'));
+        return view('admin.student.add', compact('header_title', 'classes'));
     }
 
     public function student_store(Request $request)
@@ -80,17 +78,17 @@ class StudentController extends Controller
         $header_title = 'Edit Student';
         $student = User::find($id);
         $classes = Classroom::where('status', 'active')->get();
-        return view('admin.student.edit', compact('header_title' , 'student', 'classes'));
+        return view('admin.student.edit', compact('header_title', 'student', 'classes'));
     }
 
     public function student_update(Request $request, $id)
     {
         $student = User::find($id);
-        $student->image = $this->updateImage($request, 'profile_picture', 'profile_pictures' , $student->image);
+        $student->image = $this->updateImage($request, 'profile_picture', 'profile_pictures', $student->image);
         $student->name = $request->input('name') ?? $student->name;
         $student->last_name = $request->input('last_name') ?? $student->last_name;
         $student->admission_number = $request->input('admission_number') ?? $student->admission_number;
-        $student->roll_number = $request->input('roll_number')  ?? $student->roll_number;
+        $student->roll_number = $request->input('roll_number') ?? $student->roll_number;
         $student->class_id = $request->input('class_id') ?? $student->class_id;
         $student->gender = $request->input('gender') ?? $student->gender;
         $student->date_of_birth = $request->input('date_of_birth') ?? $student->date_of_birth;

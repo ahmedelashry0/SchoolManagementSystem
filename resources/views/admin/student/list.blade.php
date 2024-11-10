@@ -25,28 +25,38 @@
                             <form action="{{ route('admin.student.list') }}" method="get" class="mb-3">
                                 <div class="card-body">
                                     <div class="form-row">
-                                        <div class="form-group col-md-4">
+                                        <div class="form-group col-md-2">
                                             <label for="name">Name</label>
                                             <input type="text" class="form-control" id="name" name="name"
                                                    placeholder="Enter Name" value="{{ request('name') }}">
                                             <input type="hidden" id="last_name" name="last_name" value="{{ request('name') }}">
                                         </div>
-                                        <div class="form-group col-md-4">
+                                        <div class="form-group col-md-2">
                                             <label for="email">Email Address</label>
                                             <input type="text" class="form-control" id="email" name="email"
                                                    placeholder="Enter Email" value="{{ request('email') }}">
                                         </div>
-                                        <div class="form-group col-md-4">
+                                        <div class="form-group col-md-2">
+                                            <label for="add">ADD</label>
+                                            <input type="date" class="form-control" id="add" name="admission_date"
+                                                   value="{{ request('admission_date') }}">
+                                        </div>
+                                        <div class="form-group col-md-2">
+                                            <label for="rn">Role Number</label>
+                                            <input type="text" class="form-control" id="rn" name="role_number"
+                                                   placeholder="Enter RN" value="{{ request('role_number') }}">
+                                        </div>
+                                        <div class="form-group col-md-">
                                             <label for="ad">AD</label>
                                             <input type="text" class="form-control" id="ad" name="admission_number"
                                                    placeholder="Enter AD" value="{{ request('admission_number') }}">
                                         </div>
-                                        <div class="form-group col-md-4">
+                                        <div class="form-group col-md-2">
                                             <label for="date">Date</label>
                                             <input type="date" class="form-control" id="date" name="date_of_birth"
                                                    value="{{ request('date_of_birth') }}">
                                         </div>
-                                        <div class="form-group col-md-4 mt-auto">
+                                        <div class="form-group col-md-2 mt-auto">
                                             <label>&nbsp;</label>
                                             <button type="submit" class="btn btn-primary">Filter</button>
                                             <button type="button" class="btn btn-secondary" onclick="resetFilters()">
@@ -98,7 +108,7 @@
                                                 <td>{{ $student->admission_number }}</td>
                                                 <td>{{ $student->admission_date }}</td>
                                                 <td>{{ $student->roll_number }}</td>
-                                                <td>{{ $student->class_name }}</td>
+                                                <td>{{ $student->student_class->name }}</td>
                                                 <td>{{ $student->gender }}</td>
                                                 <td>{{ $student->status }}</td>
                                                 <td>{{ $student->religion }}</td>

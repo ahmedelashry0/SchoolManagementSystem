@@ -45,6 +45,7 @@ class User extends Authenticatable
     ];
 
     protected $enum_status = ['active', 'inactive'];
+    protected $enum_marital_status = ['single', 'married', 'divorced', 'widowed'];
 
     public static function  getEmailSingle($email)
     {
@@ -57,8 +58,22 @@ class User extends Authenticatable
         return $this->hasMany(Classroom::class, 'created_by');
     }
 
+    public function student_class()
+    {
+        return $this->belongsTo(Classroom::class, 'class_id');
+    }
+
+    public function parent()
+    {
+        return $this->belongsTo(User::class, 'parent_id')->where('user_type', 'parent');
+    }
     public function getEnumStatus()
     {
         return $this->enum_status;
+    }
+
+    public function getEnumMaritalStatus()
+    {
+        return $this->enum_marital_status;
     }
 }

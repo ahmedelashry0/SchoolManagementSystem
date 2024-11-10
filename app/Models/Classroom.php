@@ -34,6 +34,10 @@ class Classroom extends Model
             ->withTrashed();
     }
 
+    public function student()
+    {
+        return $this->hasMany(User::class, 'class_id');
+    }
 
     public function getEnumStatus()
     {

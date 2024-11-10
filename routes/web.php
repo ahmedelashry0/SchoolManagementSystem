@@ -1,12 +1,14 @@
 <?php
 
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\ClassController;
+use App\Http\Controllers\Admin\ClassSubjectController;
+use App\Http\Controllers\Admin\ParentController;
+use App\Http\Controllers\Admin\TeacherController;
+use App\Http\Controllers\Admin\StudentController;
+use App\Http\Controllers\Admin\SubjectController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\ClassController;
-use App\Http\Controllers\ClassSubjectController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\StudentController;
-use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -64,6 +66,38 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::put('admin/student/edit/{id}', [StudentController::class , 'student_update'])->name('admin.student.update');
 
     Route::get('admin/student/delete/{id}', [StudentController::class , 'student_delete'])->name('admin.student.delete');
+
+    //Parent Routes
+    Route::get('admin/parent/list', [ParentController::class , 'parent_list'])->name('admin.parent.list');
+
+    Route::get('admin/parent/add', [ParentController::class , 'parent_add'])->name('admin.parent.add');
+
+    Route::post('admin/parent/add', [ParentController::class , 'parent_store'])->name('admin.parent.store');
+
+    Route::get('admin/parent/edit/{id}', [ParentController::class , 'parent_edit'])->name('admin.parent.edit');
+
+    Route::put('admin/parent/edit/{id}', [ParentController::class , 'parent_update'])->name('admin.parent.update');
+
+    Route::get('admin/parent/delete/{id}', [ParentController::class , 'parent_delete'])->name('admin.parent.delete');
+
+    Route::get('admin/parent/my-students/{id}', [ParentController::class , 'my_students'])->name('admin.parent.my_students');
+
+    Route::get('admin/parent/assign-student-parent/{student_id}/{parent_id}', [ParentController::class , 'assign_student_parent'])->name('admin.parent.assign_student_parent');
+
+    Route::get('admin/parent/delete-student-parent/{id}', [ParentController::class , 'delete_student_parent'])->name('admin.parent.delete_student_parent');
+
+    //Teacher Routes
+    Route::get('admin/teacher/list', [TeacherController::class , 'teacher_list'])->name('admin.teacher.list');
+
+    Route::get('admin/teacher/add', [TeacherController::class , 'teacher_add'])->name('admin.teacher.add');
+
+    Route::post('admin/teacher/add', [TeacherController::class , 'teacher_store'])->name('admin.teacher.store');
+
+    Route::get('admin/teacher/edit/{id}', [TeacherController::class , 'teacher_edit'])->name('admin.teacher.edit');
+
+    Route::put('admin/teacher/edit/{id}', [TeacherController::class , 'teacher_update'])->name('admin.teacher.update');
+
+    Route::get('admin/teacher/delete/{id}', [TeacherController::class , 'teacher_delete'])->name('admin.teacher.delete');
 
     //Class Routes
     Route::get('admin/class/list', [ClassController::class , 'class_list'])->name('admin.class.list');

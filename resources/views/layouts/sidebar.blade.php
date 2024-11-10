@@ -51,10 +51,26 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="{{ route('admin.teacher.list') }}" class="nav-link @if(Request::segment(3) == 'teacher')active @endif">
+                            <i class="nav-icon far fa-user"></i>
+                            <p>
+                                Teachers
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="{{ route('admin.student.list') }}" class="nav-link @if(Request::segment(3) == 'students')active @endif">
                             <i class="nav-icon far fa-user"></i>
                             <p>
                                 Students
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.parent.list') }}" class="nav-link @if(Request::segment(3) == 'parent')active @endif">
+                            <i class="nav-icon far fa-user"></i>
+                            <p>
+                                Parents
                             </p>
                         </a>
                     </li>
