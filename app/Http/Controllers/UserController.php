@@ -64,11 +64,11 @@ class UserController extends Controller
 
     public function update_profile(Request $request)
     {
-//        $request->validate([
-//            'name' => 'required',
-//            'email' => 'required|email',
-//            'phone' => 'required',
-//        ]);
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'nullable|min:6',
+        ]);
 
         $user = auth()->user();
         $user->name = $request->name ?? $user->name;
@@ -108,8 +108,8 @@ class UserController extends Controller
         if ($request->has('work_experience')) {
             $user->work_experience = $request->input('work_experience');
         }
-        if ($request->has('password')) {
-            $user->password = Hash::make($request->input('password'));
+        if ($request->password) {
+            $user->password = Hash::make($request->pasword);
         }
         if ($request->has('religion')) {
             $user->religion = $request->input('religion');

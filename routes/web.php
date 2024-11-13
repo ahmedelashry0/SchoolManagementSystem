@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\SubjectController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\parent\ParentDashboardController;
+use App\Http\Controllers\student\StudentDashboardController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -184,4 +185,6 @@ Route::prefix('student')->middleware('student')->group(function () {
     Route::get('profile', [UserController::class , 'profile'])->name('student.profile');
 
     Route::put('profile', [UserController::class , 'update_profile'])->name('student.update-profile');
+
+    Route::get('my-subjects', [StudentDashboardController::class , 'my_subjects'])->name('student.my_subjects');
 });

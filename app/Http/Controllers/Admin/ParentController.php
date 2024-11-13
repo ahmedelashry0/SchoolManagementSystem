@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Traits\Filter;
 use App\Traits\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class ParentController extends Controller
 {
@@ -98,6 +99,9 @@ class ParentController extends Controller
         $user->gender = $request->gender ?? $user->gender;
         $user->status = $request->status ?? $user->status;
         $user->occupation = $request->occupation ?? $user->occupation;
+        if ($request->password) {
+            $user->password = Hash::make($request->password);
+        }
         $user->save();
 
         return redirect()->route('admin.parent.list')->with('success', 'Parent updated successfully');
