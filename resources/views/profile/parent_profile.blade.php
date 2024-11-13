@@ -6,7 +6,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-12">
-                        <h1>Edit parent</h1>
+                        <h1>Edit my profile</h1>
                     </div>
                 </div>
             </div><!-- /.container-fluid -->
@@ -20,55 +20,44 @@
                     <div class="col-md-12">
                         <!-- general form elements -->
                         <div class="card card-primary">
+                            @include('_message')
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form action="{{ route('admin.parent.update' , $parent->id) }}" method="post" enctype="multipart/form-data">
+                            <form action="{{ route('parent.update-profile') }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="form-group col-md-4">
                                             <label>Name</label>
-                                            <input type="text" class="form-control" name="name" value="{{ $parent->name }}"  placeholder="Enter Name" >
+                                            <input type="text" class="form-control" name="name" value="{{ $user->name }}"  placeholder="Enter Name" >
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label>Last Name</label>
-                                            <input type="text" class="form-control" name="last_name" value="{{ $parent->last_name }}"  placeholder="Enter Last  Name" >
+                                            <input type="text" class="form-control" name="last_name" value="{{ $user->last_name }}"  placeholder="Enter Last  Name" >
                                         </div>
                                         <div class="form-group col-md-4">
-                                            <label>Gender <span style="color: red;">*</span></label>
+                                            <label>Gender</label>
                                             <select name="gender" class="form-control" >
                                                 <option value="">Choose Gender</option>
-                                                <option value="male"@selected($parent->gender == 'male')>Male</option>
-                                                <option value="female" @selected($parent->gender == 'female')>Female</option>
+                                                <option value="male"@selected($user->gender == 'male')>Male</option>
+                                                <option value="female" @selected($user->gender == 'female')>Female</option>
                                             </select>
                                         </div>
                                         <div class="form-group col-md-4">
-                                            <label>Phone Number <span style="color: red;">*</span></label>
+                                            <label>Phone Number </label>
                                             <input type="text" class="form-control" name="phone_number"
-                                                   placeholder="Enter Phone Number" value="{{ $parent->phone_number }}">
+                                                   placeholder="Enter Phone Number" value="{{ $user->phone_number }}">
                                         </div>
                                         <div class="form-group col-md-4">
-                                            <label>Occupation <span style="color: red;">*</span></label>
+                                            <label>Occupation</label>
                                             <input type="text" class="form-control" name="occupation"
-                                                   placeholder="Enter Occupation" value="{{ $parent->occupation }}" >
+                                                   placeholder="Enter Occupation" value="{{ $user->occupation }}" >
                                         </div>
                                         <div class="form-group col-md-4">
-                                            <label>Address <span style="color: red;">*</span></label>
+                                            <label>Address </label>
                                             <input type="text" class="form-control" name="address"
-                                                   placeholder="Enter Address" value="{{ $parent->address }}">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label>Status <span style="color: red;">*</span></label>
-                                            <select name="status" class="form-control" >
-                                                <option value="">Select Status</option>
-                                                @foreach((new \App\Models\User())->getEnumStatus() as $status)
-                                                    <option value="{{ $status }}"
-                                                        @selected($parent->status == $status)>
-                                                        {{ ucfirst($status) }}
-                                                    </option>
-                                                @endforeach
-                                            </select>
+                                                   placeholder="Enter Address" value="{{ $user->address }}">
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="exampleInputFile">Profile Picture</label>
@@ -77,12 +66,13 @@
                                                     <input type="file" class="custom-file-input" id="exampleInputFile" name="profile_picture">
                                                     <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                                                 </div>
+                                                <img src="{{ asset('storage/' . $user->image) }}" alt="" style="width: 70px; height: 70px; object-fit: cover;">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Email address</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder="Enter email"  value="{{ $parent->email }}">
+                                        <input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder="Enter email"  value="{{ $user->email }}">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Password</label>

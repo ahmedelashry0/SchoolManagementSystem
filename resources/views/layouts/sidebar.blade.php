@@ -43,6 +43,14 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="{{ route('admin.profile') }}" class="nav-link @if(Request::segment(2) == 'profile')active @endif">
+                            <i class="nav-icon fas fa-user-circle"></i>
+                            <p>
+                                My Profile
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="{{ route('admin.list') }}" class="nav-link @if(Request::segment(3) == 'list')active @endif">
                             <i class="nav-icon far fa-user"></i>
                             <p>
@@ -115,6 +123,14 @@
                             </p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route('teacher.profile') }}" class="nav-link @if(Request::segment(2) == 'profile')active @endif">
+                            <i class="nav-icon fas fa-user-circle"></i>
+                            <p>
+                                My Profile
+                            </p>
+                        </a>
+                    </li>
                 @elseif(Auth::user()->user_type == 'student')
                     <li class="nav-item">
                         <a href="{{ route('student.dashboard') }}" class="nav-link @if(Request::segment(2) == 'dashboard')active @endif">
@@ -124,13 +140,28 @@
                             </p>
                         </a>
                     </li>
-
+                    <li class="nav-item">
+                        <a href="{{ route('student.profile') }}" class="nav-link @if(Request::segment(2) == 'profile')active @endif">
+                            <i class="nav-icon fas fa-user-circle"></i>
+                            <p>
+                                My Profile
+                            </p>
+                        </a>
+                    </li>
                 @elseif(Auth::user()->user_type == 'parent')
                     <li class="nav-item">
                         <a href="{{ route('parent.dashboard') }}" class="nav-link @if(Request::segment(2) == 'dashboard')active @endif">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
                             <p>
                                 Dashboard
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('parent.profile') }}" class="nav-link @if(Request::segment(2) == 'profile')active @endif">
+                            <i class="nav-icon fas fa-user-circle"></i>
+                            <p>
+                                My Profile
                             </p>
                         </a>
                     </li>

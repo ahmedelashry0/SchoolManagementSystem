@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\SubjectController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\parent\ParentDashboardController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -41,6 +42,10 @@ Route::post('reset-password/{token}', [AuthController::class, 'update_password']
 
 Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('admin.dashboard');
+
+    Route::get('profile', [UserController::class , 'profile'])->name('admin.profile');
+
+    Route::put('profile', [UserController::class , 'update_profile'])->name('admin.update-profile');
 
     Route::get('/admin/list', [AdminController::class , 'list'])->name('admin.list');
 
@@ -153,16 +158,30 @@ Route::prefix('teacher')->middleware('teacher')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('teacher.dashboard');
     Route::get('change-password', [UserController::class , 'change-password'])->name('teacher.change-password');
     Route::post('change-password', [UserController::class , 'update-password'])->name('teacher.update-password');
+
+    Route::get('profile', [UserController::class , 'profile'])->name('teacher.profile');
+
+    Route::put('profile', [UserController::class , 'update_profile'])->name('teacher.update-profile');
 });
 
 Route::prefix('parent')->middleware('parent')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('parent.dashboard');
     Route::get('change-password', [UserController::class , 'change-password'])->name('parent.change-password');
     Route::post('change-password', [UserController::class , 'update-password'])->name('parent.update-password');
+
+    Route::get('profile', [UserController::class , 'profile'])->name('parent.profile');
+
+    Route::put('profile', [UserController::class , 'update_profile'])->name('parent.update-profile');
+
+    Route::get('my-students', [ParentDashboardController::class , 'my_students'])->name('parent.my_students');
 });
 
 Route::prefix('student')->middleware('student')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('student.dashboard');
     Route::get('change-password', [UserController::class , 'change-password'])->name('student.change-password');
     Route::post('change-password', [UserController::class , 'update-password'])->name('student.update-password');
+
+    Route::get('profile', [UserController::class , 'profile'])->name('student.profile');
+
+    Route::put('profile', [UserController::class , 'update_profile'])->name('student.update-profile');
 });
