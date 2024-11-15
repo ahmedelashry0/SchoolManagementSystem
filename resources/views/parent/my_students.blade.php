@@ -76,8 +76,7 @@
                                                 <td>{{ $student->created_at->format('d/m/y') }}</td>
                                                 <td>
                                                     <div class="btn-group" role="group" aria-label="Actions">
-                                                        <a href="{{ route('admin.student.edit', $student->id) }}" class="btn btn-info btn-sm">Edit</a>
-                                                        <a href="{{ route('admin.student.delete', $student->id) }}" class="btn btn-danger btn-sm ml-1">Delete</a>
+                                                        <a href="{{ route('parent.my_students_subjects', $student->id) }}" class="btn btn-info btn-sm">Subjects</a>
                                                     </div>
                                                 </td>
                                             </tr>

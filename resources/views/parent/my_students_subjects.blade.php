@@ -55,14 +55,4 @@
             </div>
         </section>
     </div>
-
-    <script>
-        function resetFilters() {
-            document.querySelector('input[name="name"]').value = '';
-            document.querySelector('select[name="status"]').value = '';
-            document.querySelector('select[name="type"]').value = '';
-            document.querySelector('input[name="date"]').value = '';
-            window.location.href = "{{ route('admin.subject.list') }}";
-        }
-    </script>
 @endsection
