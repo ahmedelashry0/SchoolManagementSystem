@@ -107,6 +107,14 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="{{ route('admin.class_teacher.list') }}" class="nav-link @if(Request::segment(3) == 'class_teacher')active @endif">
+                            <i class="nav-icon far fa-user"></i>
+                            <p>
+                                Assign Class Teacher
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="{{ route('admin.change-password') }}" class="nav-link @if(Request::segment(3) == 'change-password')active @endif">
                             <i class="nav-icon far fa-user"></i>
                             <p>

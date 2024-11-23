@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ClassController;
 use App\Http\Controllers\Admin\ClassSubjectController;
+use App\Http\Controllers\admin\ClassTeacherController;
 use App\Http\Controllers\Admin\ParentController;
 use App\Http\Controllers\Admin\TeacherController;
 use App\Http\Controllers\Admin\StudentController;
@@ -147,6 +148,20 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::post('admin/class-subject/edit_single/{id}', [ClassSubjectController::class , 'update_single'])->name('admin.class_subject.update_single');
 
     Route::get('admin/class-subject/delete/{id}', [ClassSubjectController::class , 'delete'])->name('admin.class_subject.delete');
+
+    //Class_Teacher Routes
+
+    Route::get('admin/class-teacher/list', [ClassTeacherController::class , 'list'])->name('admin.class_teacher.list');
+
+    Route::get('admin/class-teacher/assign', [ClassTeacherController::class , 'assign'])->name('admin.class_teacher.assign');
+
+    Route::post('admin/class-teacher/assign', [ClassTeacherController::class , 'assign_store'])->name('admin.class_teacher.assign_store');
+
+    Route::get('admin/class-teacher/edit/{id}', [ClassTeacherController::class , 'edit'])->name('admin.class_teacher.edit');
+
+    Route::post('admin/class-teacher/edit/{id}', [ClassTeacherController::class , 'update'])->name('admin.class_teacher.update');
+
+    Route::get('admin/class-teacher/delete/{id}', [ClassTeacherController::class , 'delete'])->name('admin.class_teacher.delete');
 
     //Change Password
     Route::get('admin/change-password', [UserController::class , 'change_password'])->name('admin.change-password');

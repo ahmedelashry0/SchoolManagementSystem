@@ -39,6 +39,13 @@ class Classroom extends Model
         return $this->hasMany(User::class, 'class_id');
     }
 
+    public function teachers()
+    {
+        return $this->belongsToMany(User::class, 'class_teachers', 'class_id', 'teacher_id')
+            ->withPivot(['status'])
+            ->withTimestamps()
+            ->withTrashed();
+    }
     public function getEnumStatus()
     {
         return $this->enum_status;
