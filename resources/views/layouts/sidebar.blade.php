@@ -139,6 +139,14 @@
                             </p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route('teacher.my_classes') }}" class="nav-link @if(Request::segment(2) == 'my_classes')active @endif">
+                            <i class="nav-icon fas fa-user-circle"></i>
+                            <p>
+                                My Class-Subjects
+                            </p>
+                        </a>
+                    </li>
                 @elseif(Auth::user()->user_type == 'student')
                     <li class="nav-item">
                         <a href="{{ route('student.dashboard') }}" class="nav-link @if(Request::segment(2) == 'dashboard')active @endif">

@@ -21,12 +21,12 @@ class Classroom extends Model
         'inactive',
     ];
 
-    public function user()
+    public function user() //relationship with user (CreatedBy)
     {
         return $this->belongsTo(User::class, 'created_by');
     }
 
-    public function subject()
+    public function subject() //relationship with subject
     {
         return $this->belongsToMany(Subject::class, 'class_subject', 'class_id', 'subject_id')
             ->withPivot(['status' , 'created_by'])
@@ -34,12 +34,12 @@ class Classroom extends Model
             ->withTrashed();
     }
 
-    public function student()
+    public function student() //relationship with student
     {
         return $this->hasMany(User::class, 'class_id');
     }
 
-    public function teachers()
+    public function teachers() //relationship with teacher
     {
         return $this->belongsToMany(User::class, 'class_teachers', 'class_id', 'teacher_id')
             ->withPivot(['status'])
@@ -49,5 +49,10 @@ class Classroom extends Model
     public function getEnumStatus()
     {
         return $this->enum_status;
+    }
+
+    public function classSubjects() //relationship with class_subject
+    {
+        return $this->hasMany(ClassSubject::class, 'class_id');
     }
 }

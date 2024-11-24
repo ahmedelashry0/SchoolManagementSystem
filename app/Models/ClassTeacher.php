@@ -14,15 +14,14 @@ class ClassTeacher extends Model
         'teacher_id',
     ];
 
-    public function classroom()
+    public function classroom() //relationship with classroom
     {
         return $this->belongsTo(Classroom::class , 'class_id');
     }
 
-    public function teacher()
+    public function teacher() //relationship with teacher
     {
         return $this->belongsTo(User::class);
     }
-
 
 }

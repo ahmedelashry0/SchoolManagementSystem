@@ -24,17 +24,17 @@ class ClassSubject extends Model
         'inactive',
     ];
 
-    public function user()
+    public function user() //relationship with user (CreatedBy)
     {
         return $this->belongsTo(User::class, 'created_by');
     }
 
-    public function subject()
+    public function subject() //relationship with subject
     {
         return $this->belongsTo(Subject::class, 'subject_id');
     }
 
-    public function classroom()
+    public function classroom() //relationship with classroom
     {
         return $this->belongsTo(Classroom::class, 'class_id');
     }
@@ -43,4 +43,5 @@ class ClassSubject extends Model
     {
         return $this->enum_status;
     }
+
 }

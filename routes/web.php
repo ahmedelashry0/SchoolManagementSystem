@@ -12,6 +12,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\parent\ParentDashboardController;
 use App\Http\Controllers\student\StudentDashboardController;
+use App\Http\Controllers\teacher\TeacherDashboardController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -178,6 +179,8 @@ Route::prefix('teacher')->middleware('teacher')->group(function () {
     Route::get('profile', [UserController::class , 'profile'])->name('teacher.profile');
 
     Route::put('profile', [UserController::class , 'update_profile'])->name('teacher.update-profile');
+
+    Route::get('my-classes', [TeacherDashboardController::class , 'my_classes'])->name('teacher.my_classes');
 });
 
 Route::prefix('parent')->middleware('parent')->group(function () {
