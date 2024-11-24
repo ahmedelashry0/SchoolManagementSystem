@@ -140,10 +140,18 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('teacher.my_classes') }}" class="nav-link @if(Request::segment(2) == 'my_classes')active @endif">
+                        <a href="{{ route('teacher.my_classes') }}" class="nav-link @if(Request::segment(2) == 'my-classes')active @endif">
                             <i class="nav-icon fas fa-user-circle"></i>
                             <p>
                                 My Class-Subjects
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('teacher.my_students') }}" class="nav-link @if(Request::segment(2) == 'my-students')active @endif">
+                            <i class="nav-icon fas fa-user-circle"></i>
+                            <p>
+                                My Students
                             </p>
                         </a>
                     </li>

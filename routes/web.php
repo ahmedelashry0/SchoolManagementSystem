@@ -181,6 +181,8 @@ Route::prefix('teacher')->middleware('teacher')->group(function () {
     Route::put('profile', [UserController::class , 'update_profile'])->name('teacher.update-profile');
 
     Route::get('my-classes', [TeacherDashboardController::class , 'my_classes'])->name('teacher.my_classes');
+
+    Route::get('my-students', [TeacherDashboardController::class , 'my_students'])->name('teacher.my_students');
 });
 
 Route::prefix('parent')->middleware('parent')->group(function () {
