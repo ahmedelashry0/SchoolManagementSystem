@@ -82,37 +82,48 @@
                             </p>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="{{ route('admin.class.list') }}" class="nav-link @if(Request::segment(3) == 'class')active @endif">
-                            <i class="nav-icon far fa-user"></i>
+                    <li class="nav-item @if(in_array(Request::segment(3) , ['class' , 'subject', 'class-subject', 'class-teacher'])) menu-is-opening menu-open @endif" >
+                        <a href="#" class="nav-link @if(in_array(Request::segment(3) , ['class' , 'subject', 'class-subject', 'class-teacher'])) active @endif">
+                            <i class="nav-icon fas fa-table"></i>
                             <p>
-                                Class
+                                Academics
+                                <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('admin.subject.list') }}" class="nav-link @if(Request::segment(3) == 'subject')active @endif">
-                            <i class="nav-icon far fa-user"></i>
-                            <p>
-                                Subjects
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('admin.class_subject.list') }}" class="nav-link @if(Request::segment(3) == 'class_subject')active @endif">
-                            <i class="nav-icon far fa-user"></i>
-                            <p>
-                                Assign Subjects
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('admin.class_teacher.list') }}" class="nav-link @if(Request::segment(3) == 'class_teacher')active @endif">
-                            <i class="nav-icon far fa-user"></i>
-                            <p>
-                                Assign Class Teacher
-                            </p>
-                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('admin.class.list') }}" class="nav-link @if(Request::segment(3) == 'class')active @endif">
+                                    <i class="nav-icon far fa-circle"></i>
+                                    <p>
+                                        Class
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('admin.subject.list') }}" class="nav-link @if(Request::segment(3) == 'subject')active @endif">
+                                    <i class="nav-icon far fa-circle"></i>
+                                    <p>
+                                        Subjects
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('admin.class_subject.list') }}" class="nav-link @if(Request::segment(3) == 'class-subject')active @endif">
+                                    <i class="nav-icon far fa-circle"></i>
+                                    <p>
+                                        Assign Subjects
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('admin.class_teacher.list') }}" class="nav-link @if(Request::segment(3) == 'class-teacher')active @endif">
+                                    <i class="nav-icon far fa-circle"></i>
+                                    <p>
+                                        Assign Class Teacher
+                                    </p>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('admin.change-password') }}" class="nav-link @if(Request::segment(3) == 'change-password')active @endif">
@@ -147,6 +158,7 @@
                             </p>
                         </a>
                     </li>
+
                     <li class="nav-item">
                         <a href="{{ route('teacher.my_students') }}" class="nav-link @if(Request::segment(2) == 'my-students')active @endif">
                             <i class="nav-icon fas fa-user-circle"></i>

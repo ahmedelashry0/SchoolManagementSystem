@@ -8,7 +8,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Classes-Subjects List (Total: {{ $classTeachers->total() }})</h1>
+                        <h1>Classes-Teachers List (Total: {{ $classTeachers->total() }})</h1>
                     </div>
                     <div class="col-sm-6 text-right">
                         <a class="btn btn-primary" href="{{ route('admin.class_teacher.assign') }}">Assign Teacher</a>
