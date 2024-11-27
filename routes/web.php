@@ -219,4 +219,6 @@ Route::prefix('student')->middleware('student')->group(function () {
     Route::put('profile', [UserController::class , 'update_profile'])->name('student.update-profile');
 
     Route::get('my-subjects', [StudentDashboardController::class , 'my_subjects'])->name('student.my_subjects');
+
+    Route::get('my-timetable', [StudentDashboardController::class , 'my_timetable'])->name('student.my_timetable');
 });

@@ -37,4 +37,9 @@ class Subject extends Model
     {
         return $this->enum_type;
     }
+
+    public function timetables()
+    {
+        return $this->hasMany(Class_Subject_Timetable::class, 'subject_id');
+    }
 }
