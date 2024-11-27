@@ -83,7 +83,7 @@
                         </a>
                     </li>
                     <li class="nav-item @if(in_array(Request::segment(3) , ['class' , 'subject', 'class-subject', 'class-teacher'])) menu-is-opening menu-open @endif" >
-                        <a href="#" class="nav-link @if(in_array(Request::segment(3) , ['class' , 'subject', 'class-subject', 'class-teacher'])) active @endif">
+                        <a href="#" class="nav-link @if(in_array(Request::segment(3) , ['class' , 'subject', 'class-subject', 'class-teacher' ,'class-timetable'])) active @endif">
                             <i class="nav-icon fas fa-table"></i>
                             <p>
                                 Academics
@@ -120,6 +120,14 @@
                                     <i class="nav-icon far fa-circle"></i>
                                     <p>
                                         Assign Class Teacher
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('admin.class_timetable') }}" class="nav-link @if(Request::segment(3) == 'class-timetable')active @endif">
+                                    <i class="nav-icon far fa-circle"></i>
+                                    <p>
+                                        Class Timetable
                                     </p>
                                 </a>
                             </li>

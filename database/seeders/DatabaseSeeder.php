@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Week;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -14,8 +15,8 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // \App\Models\User::factory(10)->create();
-         \App\Models\Classroom::factory(10)->create();
-         \App\Models\Subject::factory(10)->create();
+//         \App\Models\Classroom::factory(10)->create();
+//         \App\Models\Subject::factory(10)->create();
 
 //        \App\Models\User::factory()->create([
 //            'name' => 'parent',
@@ -32,6 +33,16 @@ class DatabaseSeeder extends Seeder
 //            'type' => 'theory',
 //            'status' => 'active',
 //            'created_by' => 1,
+//        ]);
+
+//        Week::insert([
+//            ['name' => 'Monday'],
+//            ['name' => 'Tuesday'],
+//            ['name' => 'Wednesday'],
+//            ['name' => 'Thursday'],
+//            ['name' => 'Friday'],
+//            ['name' => 'Saturday'],
+//            ['name' => 'Sunday'],
 //        ]);
     }
 }

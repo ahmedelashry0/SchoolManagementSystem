@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ClassController;
 use App\Http\Controllers\Admin\ClassSubjectController;
 use App\Http\Controllers\admin\ClassTeacherController;
+use App\Http\Controllers\Admin\ClassTimetableController;
 use App\Http\Controllers\Admin\ParentController;
 use App\Http\Controllers\Admin\TeacherController;
 use App\Http\Controllers\Admin\StudentController;
@@ -164,6 +165,15 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     Route::get('admin/class-teacher/delete/{id}', [ClassTeacherController::class , 'delete'])->name('admin.class_teacher.delete');
 
+    //class timetable
+
+    Route::get('admin/class-timetable', [ClassTimetableController::class , 'index'])->name('admin.class_timetable');
+
+    Route::get('/get-subjects-by-class/{classId}', [ClassTimetableController::class, 'getSubjectsByClass'])->name('get.subjects.by.class');
+
+    Route::get('/get-timetable/{classId}/{subjectId}', [ClassTimetableController::class, 'getTimetable'])->name('get.timetable');
+
+    Route::post('admin/class-timetable/add', [ClassTimetableController::class , 'add'])->name('admin.class_timetable.add');
     //Change Password
     Route::get('admin/change-password', [UserController::class , 'change_password'])->name('admin.change-password');
 
