@@ -192,6 +192,8 @@ Route::prefix('teacher')->middleware('teacher')->group(function () {
 
     Route::get('my-classes', [TeacherDashboardController::class , 'my_classes'])->name('teacher.my_classes');
 
+    Route::get('my-classes/class-timetable/{class_id}/{subject_id}', [TeacherDashboardController::class , 'my_timetable'])->name('teacher.my_timetable');
+
     Route::get('my-students', [TeacherDashboardController::class , 'my_students'])->name('teacher.my_students');
 
     //change password

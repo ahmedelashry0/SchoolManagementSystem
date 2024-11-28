@@ -95,7 +95,9 @@
                                         <th>Class Name</th>
                                         <th>Subject Name</th>
                                         <th>Subject Type</th>
+                                        <th>My class Timetable</th>
                                         <th>Created Date</th>
+                                        <th>Actions</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -106,7 +108,27 @@
                                                 <td>{{ $classTeacher->classroom->name }}</td>
                                                 <td>{{ $classSubject->subject?->name ?? 'N/A' }}</td>
                                                 <td>{{ ucfirst($classSubject->subject?->type ?? 'N/A') }}</td>
+                                                <td>
+                                                    @php
+                                                        $today = now()->dayName;
+                                                        $timetable = $classSubject->timetables
+                                                            ->where('week.name', $today)
+                                                            ->where('class_id', $classTeacher->classroom->id)
+                                                            ->where('subject_id', $classSubject->subject->id)
+                                                            ->first();
+
+                                                    @endphp
+
+                                                    @if ($timetable)
+                                                        {{ \Carbon\Carbon::parse($timetable->start_time)->format('h:i A') }} - {{ \Carbon\Carbon::parse($timetable->end_time)->format('h:i A') }}<br>
+                                                        Room: {{ $timetable->room_number }}
+                                                    @else
+                                                        No timetable today
+                                                    @endif
+                                                </td>
+
                                                 <td>{{ $classSubject->created_at->format('Y-m-d') }}</td>
+                                                <td><a href="{{ route('teacher.my_timetable', [$classTeacher->classroom->id ,$classSubject->subject->id] ) }}" class="btn btn-info btn-sm">Timetable</a></td>
                                             </tr>
                                         @endforeach
                                     @endforeach

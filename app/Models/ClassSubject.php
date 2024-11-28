@@ -39,6 +39,12 @@ class ClassSubject extends Model
         return $this->belongsTo(Classroom::class, 'class_id');
     }
 
+    public function timetables()
+    {
+        return $this->hasMany(Class_Subject_Timetable::class, 'subject_id', 'subject_id');
+    }
+
+
     public function getEnumStatus()
     {
         return $this->enum_status;
