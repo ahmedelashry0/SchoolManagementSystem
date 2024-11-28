@@ -175,6 +175,15 @@
                             </p>
                         </a>
                     </li>
+
+                    <li class="nav-item">
+                        <a href="{{ route('teacher.change-password') }}" class="nav-link @if(Request::segment(2) == 'change-password')active @endif">
+                            <i class="nav-icon fas fa-user-circle"></i>
+                            <p>
+                                Change password
+                            </p>
+                        </a>
+                    </li>
                 @elseif(Auth::user()->user_type == 'student')
                     <li class="nav-item">
                         <a href="{{ route('student.dashboard') }}" class="nav-link @if(Request::segment(2) == 'dashboard')active @endif">

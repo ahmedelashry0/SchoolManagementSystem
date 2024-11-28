@@ -193,6 +193,11 @@ Route::prefix('teacher')->middleware('teacher')->group(function () {
     Route::get('my-classes', [TeacherDashboardController::class , 'my_classes'])->name('teacher.my_classes');
 
     Route::get('my-students', [TeacherDashboardController::class , 'my_students'])->name('teacher.my_students');
+
+    //change password
+    Route::get('change-password', [UserController::class , 'change_password'])->name('teacher.change-password');
+
+    Route::post('change-password', [UserController::class , 'update_password'])->name('teacher.update-password');
 });
 
 Route::prefix('parent')->middleware('parent')->group(function () {

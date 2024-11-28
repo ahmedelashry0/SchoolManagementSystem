@@ -24,7 +24,24 @@
                             <!-- /.card-header -->
                             <!-- form start -->
                             @include('_message')
-                            <form action="{{ route('admin.update-password') }}" method="post">
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+                            @php
+                                    $action = '';
+                                    if (Auth::user()->user_type == 'admin') {
+                                        $action = route('admin.update-password');
+                                    } elseif (Auth::user()->user_type == 'teacher') {
+                                        $action = route('teacher.update-password');
+                                    }
+                            @endphp
+                            <form action="{{$action}}" method="post">
                                 @csrf
                                 <div class="card-body">
                                     <div class="form-group">
