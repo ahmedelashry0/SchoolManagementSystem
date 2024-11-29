@@ -23,4 +23,16 @@ class ParentDashboardController extends Controller
         $subjects = $student->subjects()->paginate(6);
         return view('parent.my_students_subjects', compact('student' , 'subjects', 'header_title'));
     }
+
+    public function my_students_subjects_timetable($id)
+    {
+        $header_title = 'My Students Subjects Timetable';
+
+        // Fetch the student with their class, subjects, and timetables
+        $student = User::with(['student_class.classSubjects.subject.timetables.week'])
+            ->findOrFail($id);
+
+        return view('parent.my_students_subjects_timetable', compact('student', 'header_title'));
+    }
+
 }

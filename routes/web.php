@@ -214,6 +214,8 @@ Route::prefix('parent')->middleware('parent')->group(function () {
     Route::get('my-students', [ParentDashboardController::class , 'my_students'])->name('parent.my_students');
 
     Route::get('my-students-subjects/{id}', [ParentDashboardController::class , 'my_students_subjects'])->name('parent.my_students_subjects');
+
+    Route::get('my-students-timetable/{student_id}', [ParentDashboardController::class , 'my_students_subjects_timetable'])->name('parent.my_students_timetable');
 });
 
 Route::prefix('student')->middleware('student')->group(function () {
