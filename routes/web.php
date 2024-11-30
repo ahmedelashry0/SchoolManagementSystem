@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\ClassController;
 use App\Http\Controllers\Admin\ClassSubjectController;
 use App\Http\Controllers\admin\ClassTeacherController;
 use App\Http\Controllers\Admin\ClassTimetableController;
+use App\Http\Controllers\Admin\ExamController;
 use App\Http\Controllers\Admin\ParentController;
 use App\Http\Controllers\Admin\TeacherController;
 use App\Http\Controllers\Admin\StudentController;
@@ -174,6 +175,20 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/get-timetable/{classId}/{subjectId}', [ClassTimetableController::class, 'getTimetable'])->name('get.timetable');
 
     Route::post('admin/class-timetable/add', [ClassTimetableController::class , 'add'])->name('admin.class_timetable.add');
+
+    //Exam Routes
+    Route::get('admin/exam/list', [ExamController::class , 'list'])->name('admin.exam.list');
+
+    Route::get('admin/exam/add', [ExamController::class , 'add'])->name('admin.exam.add');
+
+    Route::post('admin/exam/add', [ExamController::class , 'store'])->name('admin.exam.store');
+
+    Route::get('admin/exam/edit/{id}', [ExamController::class , 'edit'])->name('admin.exam.edit');
+
+    Route::post('admin/exam/edit/{id}', [ExamController::class , 'update'])->name('admin.exam.update');
+
+    Route::get('admin/exam/delete/{id}', [ExamController::class , 'delete'])->name('admin.exam.delete');
+
     //Change Password
     Route::get('admin/change-password', [UserController::class , 'change_password'])->name('admin.change-password');
 

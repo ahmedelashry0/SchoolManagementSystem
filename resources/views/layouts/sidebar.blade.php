@@ -133,6 +133,25 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="nav-item @if(in_array(Request::segment(3) , ['exam'])) menu-is-opening menu-open @endif" >
+                        <a href="#" class="nav-link @if(in_array(Request::segment(3) , ['exam' ])) active @endif">
+                            <i class="nav-icon fas fa-table"></i>
+                            <p>
+                                Examinations
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('admin.exam.list') }}" class="nav-link @if(Request::segment(3) == 'exam')active @endif">
+                                    <i class="nav-icon far fa-circle"></i>
+                                    <p>
+                                        Exams
+                                    </p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                     <li class="nav-item">
                         <a href="{{ route('admin.change-password') }}" class="nav-link @if(Request::segment(3) == 'change-password')active @endif">
                             <i class="nav-icon far fa-user"></i>

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Exam;
 use App\Models\Week;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -15,11 +16,12 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // \App\Models\User::factory(10)->create();
-         \App\Models\Classroom::factory(20)->create();
-         \App\Models\Subject::factory(20)->create();
-            \App\Models\ClassSubject::factory(20)->create();
-            \App\Models\ClassTeacher::factory(20)->create();
-            \App\Models\Class_Subject_Timetable::factory(20)->create();
+//         \App\Models\Classroom::factory(20)->create();
+//         \App\Models\Subject::factory(20)->create();
+//            \App\Models\ClassSubject::factory(20)->create();
+//            \App\Models\ClassTeacher::factory(20)->create();
+//            \App\Models\Class_Subject_Timetable::factory(20)->create();
+//            Exam::factory(20)->create();
 //        \App\Models\User::factory()->create([
 //            'name' => 'parent',
 //            'email' => 'parent@parent.com',
