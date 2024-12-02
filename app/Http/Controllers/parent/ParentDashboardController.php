@@ -28,7 +28,14 @@ class ParentDashboardController extends Controller
     {
         $header_title = 'My Students Subjects Timetable';
 
-        $student = User::with(['student_class.subject.timetables.week'])
+        $student = User::with(['student_class.subject.timetables' => function ($query) use ($id) {
+                $query->where('class_id', function ($subquery) use ($id) {
+                    $subquery->select('class_id')
+                        ->from('users')
+                        ->where('id', $id);
+                });
+
+        }],['student_class.subject.timetables.week'])
             ->findOrFail($id);
 
         return view('parent.my_students_subjects_timetable', compact('student', 'header_title' ));

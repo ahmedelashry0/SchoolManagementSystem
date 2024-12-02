@@ -40,8 +40,8 @@
                                                 </thead>
                                                 <tbody>
 {{--                                                @dd($student->class_id)--}}
-                                                @if($classSubject->timetables->where('class_id' , $student->class_id)->isNotEmpty())
-                                                    @foreach($classSubject->timetables->where('class_id' , $student->class_id) as $timetable)
+                                                @if($classSubject->timetables->isNotEmpty())
+                                                    @foreach($classSubject->timetables as $timetable)
                                                         <tr>
                                                             <td>{{ $timetable->week->name }}</td>
                                                             <td>{{ \Carbon\Carbon::parse($timetable->start_time)->format('h:i A') }}</td>

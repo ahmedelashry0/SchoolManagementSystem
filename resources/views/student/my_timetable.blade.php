@@ -39,7 +39,7 @@
                                                 </thead>
                                                 <tbody>
                                                 @if($subject->timetables->isNotEmpty())
-                                                    @foreach($subject->timetables->where('class_id', auth()->user()->class_id) as $timetable)
+                                                    @foreach($subject->timetables as $timetable)
                                                         <tr>
                                                             <td>{{ $timetable->week->name }}</td>
                                                             <td>{{ \Carbon\Carbon::parse($timetable->start_time)->format('h:i A') }}</td>
