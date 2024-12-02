@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Classroom;
 use App\Models\Exam;
+use App\Models\Exam_Schedule;
+use App\Models\Subject;
 use Illuminate\Http\Request;
 
 class ExamController extends Controller
@@ -65,5 +68,54 @@ class ExamController extends Controller
         $exam = Exam::findOrFail($id);
         $exam->delete();
         return redirect()->route('admin.exam.list')->with('success', 'Exam deleted successfully');
+    }
+
+    //exam schedule
+
+    public function schedule(Request $request)
+    {
+        $header_title = 'Exam Schedule';
+        $exams = Exam::all();
+        $classes = Classroom::all();
+
+        if ($request->class_id && $request->exam_id) {
+            $class_id = $request->class_id;
+            $exam_id = $request->exam_id;
+            $subjects = Subject::whereHas('class', function ($query) use ($class_id) {
+                $query->where('class_id', $class_id);
+            })->get();
+            $schedules = Exam_Schedule::where('class_id', $class_id)->where('exam_id', $exam_id)->get()->keyBy('subject_id');
+        } else {
+            $subjects = [];
+            $class_id = null;
+            $exam_id = null;
+            $schedules = [];
+        }
+        return view('admin.exam.schedule', compact('header_title', 'exams'  , 'classes' , 'subjects', 'class_id', 'exam_id' , 'schedules'));
+    }
+
+    public function schedule_store(Request $request)
+    {
+        $data = $request->input('schedule');
+        foreach ($data as $subject_id => $schedule) {
+            Exam_Schedule::updateOrCreate([
+                'exam_id' => $request->exam_id,
+                'class_id' => $request->class_id,
+                'subject_id' => $subject_id,
+            ],[
+                'exam_id' => $request->exam_id,
+                'class_id' => $request->class_id,
+                'subject_id' => $subject_id,
+                'exam_date' => $schedule['exam_date'],
+                'start_time' => $schedule['start_time'],
+                'end_time' => $schedule['end_time'],
+                'room_number' => $schedule['room_number'],
+                'full_mark' => $schedule['full_marks'],
+                'pass_mark' => $schedule['passing_marks'],
+                'created_by' => auth()->user()->id,
+            ]);
+        }
+
+        return redirect()->route('admin.exam_schedule')->with('success', 'Exam scheduled successfully');
     }
 }

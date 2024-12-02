@@ -189,6 +189,12 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     Route::get('admin/exam/delete/{id}', [ExamController::class , 'delete'])->name('admin.exam.delete');
 
+    //exam_schedule
+
+    Route::get('admin/exam-schedule', [ExamController::class , 'schedule'])->name('admin.exam_schedule');
+
+    Route::post('admin/exam-schedule', [ExamController::class , 'schedule_store'])->name('admin.exam_schedule.store');
+
     //Change Password
     Route::get('admin/change-password', [UserController::class , 'change_password'])->name('admin.change-password');
 
