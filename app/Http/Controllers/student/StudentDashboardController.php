@@ -22,7 +22,7 @@ class StudentDashboardController extends Controller
         $user_id = Auth::user()->id;
         $header_title = 'My Timetable';
         $timetables = User::with('student_class.subject.timetables.week')->find($user_id);
-//        dd($timetables->subjects);
+//        dd($timetables);
         return view('student.my_timetable', compact('timetables' , 'header_title'));
     }
 }

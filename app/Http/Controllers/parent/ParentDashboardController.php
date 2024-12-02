@@ -28,11 +28,10 @@ class ParentDashboardController extends Controller
     {
         $header_title = 'My Students Subjects Timetable';
 
-        // Fetch the student with their class, subjects, and timetables
-        $student = User::with(['student_class.classSubjects.subject.timetables.week'])
+        $student = User::with(['student_class.subject.timetables.week'])
             ->findOrFail($id);
 
-        return view('parent.my_students_subjects_timetable', compact('student', 'header_title'));
+        return view('parent.my_students_subjects_timetable', compact('student', 'header_title' ));
     }
 
 }

@@ -51,10 +51,6 @@ class Classroom extends Model
         return $this->enum_status;
     }
 
-    public function classSubjects() //relationship with class_subject
-    {
-        return $this->hasMany(ClassSubject::class, 'class_id');
-    }
 
     public function timetables()
     {
