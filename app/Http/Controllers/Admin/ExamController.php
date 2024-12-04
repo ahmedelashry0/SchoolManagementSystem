@@ -109,7 +109,7 @@ class ExamController extends Controller
                 !empty($schedule['full_marks']) &&
                 !empty($schedule['passing_marks']);
         });
-        dd($validSchedules);
+//        dd($validSchedules);
         foreach ($validSchedules as $subject_id => $schedule) {
             Exam_Schedule::updateOrCreate([
                 'exam_id' => $request->exam_id,
