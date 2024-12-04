@@ -32,4 +32,12 @@ class StudentDashboardController extends Controller
 //        dd($timetables);
         return view('student.my_timetable', compact('timetables' , 'header_title'));
     }
+
+    public function my_exams()
+    {
+        $header_title = 'My Exams';
+        $user = Auth::user();
+        $exams = $user->student_class->exams()->paginate(6);
+        return view('student.my_exams', compact('exams' , 'header_title'));
+    }
 }

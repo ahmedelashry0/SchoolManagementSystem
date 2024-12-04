@@ -46,6 +46,11 @@ class Classroom extends Model
             ->withTimestamps()
             ->withTrashed();
     }
+
+    public function ClassSubjects()
+    {
+        return $this->hasMany(ClassSubject::class, 'class_id');
+    }
     public function getEnumStatus()
     {
         return $this->enum_status;
@@ -55,5 +60,10 @@ class Classroom extends Model
     public function timetables()
     {
         return $this->hasMany(Class_Subject_Timetable::class, 'class_id');
+    }
+
+    public function exams()
+    {
+        return $this->hasMany(Exam_Schedule::class, 'class_id');
     }
 }

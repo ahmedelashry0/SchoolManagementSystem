@@ -73,31 +73,43 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-{{--                                    @dd($schedules)--}}
                                     @foreach($subjects as $subject)
                                         <tr>
                                             <td>{{ $subject->name }}</td>
                                             <td>
-                                                <input type="date" name="schedule[{{ $subject->id }}][exam_date]" value="{{ $schedules[$subject->id]['exam_date'] }}" class="form-control">
+                                                <input type="date" name="schedule[{{ $subject->id }}][exam_date]"
+                                                       value="{{ $schedules[$subject->id]['exam_date'] ?? '' }}"
+                                                       class="form-control">
                                             </td>
                                             <td>
-                                                <input type="time" name="schedule[{{ $subject->id }}][start_time]" value="{{ $schedules[$subject->id]['start_time'] }}" class="form-control">
+                                                <input type="time" name="schedule[{{ $subject->id }}][start_time]"
+                                                       value="{{ $schedules[$subject->id]['start_time'] ?? '' }}"
+                                                       class="form-control">
                                             </td>
                                             <td>
-                                                <input type="time" name="schedule[{{ $subject->id }}][end_time]" value="{{ $schedules[$subject->id]['end_time'] }}" class="form-control">
+                                                <input type="time" name="schedule[{{ $subject->id }}][end_time]"
+                                                       value="{{ $schedules[$subject->id]['end_time'] ?? '' }}"
+                                                       class="form-control">
                                             </td>
                                             <td>
-                                                <input type="text" name="schedule[{{ $subject->id }}][room_number]" value="{{ $schedules[$subject->id]['room_number'] }}" class="form-control">
+                                                <input type="text" name="schedule[{{ $subject->id }}][room_number]"
+                                                       value="{{ $schedules[$subject->id]['room_number'] ?? '' }}"
+                                                       class="form-control">
                                             </td>
                                             <td>
-                                                <input type="number" name="schedule[{{ $subject->id }}][full_marks]" value="{{ $schedules[$subject->id]['full_mark'] }}" class="form-control">
+                                                <input type="number" name="schedule[{{ $subject->id }}][full_marks]"
+                                                       value="{{ $schedules[$subject->id]['full_mark'] ?? '' }}"
+                                                       class="form-control">
                                             </td>
                                             <td>
-                                                <input type="number" name="schedule[{{ $subject->id }}][passing_marks]" value="{{ $schedules[$subject->id]['pass_mark'] }}" class="form-control">
+                                                <input type="number" name="schedule[{{ $subject->id }}][passing_marks]"
+                                                       value="{{ $schedules[$subject->id]['pass_mark'] ?? '' }}"
+                                                       class="form-control">
                                             </td>
                                         </tr>
                                     @endforeach
                                     </tbody>
+
                                 </table>
                                 <div class="d-flex justify-content-end mt-3">
                                     <button type="submit" class="btn btn-success">Save Schedule</button>

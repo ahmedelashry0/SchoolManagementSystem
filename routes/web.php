@@ -251,4 +251,6 @@ Route::prefix('student')->middleware('student')->group(function () {
     Route::get('my-subjects', [StudentDashboardController::class , 'my_subjects'])->name('student.my_subjects');
 
     Route::get('my-timetable', [StudentDashboardController::class , 'my_timetable'])->name('student.my_timetable');
+
+    Route::get('my-exams', [StudentDashboardController::class , 'my_exams'])->name('student.my_exams');
 });

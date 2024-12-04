@@ -91,13 +91,26 @@ class ExamController extends Controller
             $exam_id = null;
             $schedules = [];
         }
+
+//        dd($schedules);
         return view('admin.exam.schedule', compact('header_title', 'exams'  , 'classes' , 'subjects', 'class_id', 'exam_id' , 'schedules'));
     }
 
     public function schedule_store(Request $request)
     {
+//        dd($request->all());
         $data = $request->input('schedule');
-        foreach ($data as $subject_id => $schedule) {
+
+        $validSchedules = array_filter($data, function ($schedule) {
+            return !empty($schedule['exam_date']) &&
+                !empty($schedule['start_time']) &&
+                !empty($schedule['end_time']) &&
+                !empty($schedule['room_number']) &&
+                !empty($schedule['full_marks']) &&
+                !empty($schedule['passing_marks']);
+        });
+        dd($validSchedules);
+        foreach ($validSchedules as $subject_id => $schedule) {
             Exam_Schedule::updateOrCreate([
                 'exam_id' => $request->exam_id,
                 'class_id' => $request->class_id,
