@@ -82,7 +82,7 @@
                             </p>
                         </a>
                     </li>
-                    <li class="nav-item @if(in_array(Request::segment(3) , ['class' , 'subject', 'class-subject', 'class-teacher'])) menu-is-opening menu-open @endif" >
+                    <li class="nav-item @if(in_array(Request::segment(3) , ['class' , 'subject', 'class-subject', 'class-teacher' , 'class-timetable'])) menu-is-opening menu-open @endif" >
                         <a href="#" class="nav-link @if(in_array(Request::segment(3) , ['class' , 'subject', 'class-subject', 'class-teacher' ,'class-timetable'])) active @endif">
                             <i class="nav-icon fas fa-table"></i>
                             <p>

@@ -19,8 +19,9 @@
                     <div class="row">
                         <div class="col-md-12">
                             <!-- Display Timetables for Each Subject -->
-
+                            @if($student->student_class->subject->isNotEmpty())
                             @foreach($student->student_class->subject as $classSubject)
+
                                 <div class="card">
                                     <div class="card-header bg-primary text-white">
                                         <h3 class="card-title">
@@ -60,6 +61,15 @@
                                     </div>
                                 </div>
                             @endforeach
+                            @else
+                                <div class="card">
+                                    <div class="card-header bg-cyan text-white">
+                                        <h3 class="card-title">
+                                            No subjects or timetables available for your class.
+                                        </h3>
+                                    </div>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
