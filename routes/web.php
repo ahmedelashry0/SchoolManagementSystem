@@ -240,7 +240,7 @@ Route::prefix('parent')->middleware('parent')->group(function () {
 
     Route::get('my-students-timetable/{student_id}', [ParentDashboardController::class , 'my_students_subjects_timetable'])->name('parent.my_students_timetable');
 
-    Route::get('my-students-exams/{student_id}', [ParentDashboardController::class , 'my_students_subjects_exams'])->name('parent.my_students_exams');
+    Route::get('my-students-exams/{student_id}', [ParentDashboardController::class , 'my_students_exams'])->name('parent.my_students_exams');
 
 });
 
