@@ -193,6 +193,14 @@
                             </p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route('teacher.my_exams') }}" class="nav-link @if(Request::segment(2) == 'my-exams')active @endif">
+                            <i class="nav-icon fas fa-user-circle"></i>
+                            <p>
+                                My Exams Timetable
+                            </p>
+                        </a>
+                    </li>
 
                     <li class="nav-item">
                         <a href="{{ route('teacher.my_students') }}" class="nav-link @if(Request::segment(2) == 'my-students')active @endif">

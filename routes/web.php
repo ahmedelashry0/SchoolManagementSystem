@@ -217,6 +217,8 @@ Route::prefix('teacher')->middleware('teacher')->group(function () {
 
     Route::get('my-students', [TeacherDashboardController::class , 'my_students'])->name('teacher.my_students');
 
+    Route::get('my-exams', [TeacherDashboardController::class , 'my_exams'])->name('teacher.my_exams');
+
     //change password
     Route::get('change-password', [UserController::class , 'change_password'])->name('teacher.change-password');
 
@@ -237,6 +239,9 @@ Route::prefix('parent')->middleware('parent')->group(function () {
     Route::get('my-students-subjects/{id}', [ParentDashboardController::class , 'my_students_subjects'])->name('parent.my_students_subjects');
 
     Route::get('my-students-timetable/{student_id}', [ParentDashboardController::class , 'my_students_subjects_timetable'])->name('parent.my_students_timetable');
+
+    Route::get('my-students-exams/{student_id}', [ParentDashboardController::class , 'my_students_subjects_exams'])->name('parent.my_students_exams');
+
 });
 
 Route::prefix('student')->middleware('student')->group(function () {

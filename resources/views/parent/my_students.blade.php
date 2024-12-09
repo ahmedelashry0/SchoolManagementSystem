@@ -78,6 +78,7 @@
                                                     <div class="btn-group" role="group" aria-label="Actions">
                                                         <a href="{{ route('parent.my_students_subjects', $student->id) }}" class="btn btn-info btn-sm">Subjects</a>
                                                         <a href="{{ route('parent.my_students_timetable', $student->id) }}" class="btn btn-primary btn-sm">Timetable</a>
+                                                        <a href="{{ route('parent.', $student->id) }}" class="btn btn-primary btn-sm">Exams</a>
                                                     </div>
                                                 </td>
                                             </tr>

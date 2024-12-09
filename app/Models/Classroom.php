@@ -66,4 +66,5 @@ class Classroom extends Model
     {
         return $this->hasMany(Exam_Schedule::class, 'class_id');
     }
+
 }

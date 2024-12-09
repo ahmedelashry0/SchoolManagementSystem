@@ -5,6 +5,7 @@ namespace App\Http\Controllers\teacher;
 use App\Http\Controllers\Controller;
 use App\Models\Class_Subject_Timetable;
 use App\Models\ClassTeacher;
+use App\Models\Exam_Schedule;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -46,4 +47,22 @@ class TeacherDashboardController extends Controller
             ->where('subject_id', $subject_id)->get();
         return view('teacher.my_timetable' , compact('header_title' , 'timetables'));
     }
+
+    public function my_exams()
+    {
+        $header_title = 'My Exams';
+        $teacher_id = auth()->id();
+
+        // Fetch classes taught by the teacher and their related exam schedules
+        $classes = ClassTeacher::where('teacher_id', $teacher_id)
+            ->with([
+                'classroom.exams.subject', // Classroom's exams and related subjects
+                'classroom.exams.exam'    // Exam details
+            ])
+            ->get();
+//        dd($classes);
+        return view('teacher.my_exams', compact('header_title', 'classes'));
+    }
+
+
 }
