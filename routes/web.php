@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\TeacherController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\SubjectController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\parent\ParentDashboardController;
 use App\Http\Controllers\student\StudentDashboardController;
@@ -258,4 +259,6 @@ Route::prefix('student')->middleware('student')->group(function () {
     Route::get('my-timetable', [StudentDashboardController::class , 'my_timetable'])->name('student.my_timetable');
 
     Route::get('my-exams', [StudentDashboardController::class , 'my_exams'])->name('student.my_exams');
+
+    Route::get('my-calendar', [CalendarController::class , 'my_calendar'])->name('student.my_calendar');
 });

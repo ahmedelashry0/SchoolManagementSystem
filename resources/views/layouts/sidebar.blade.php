@@ -260,6 +260,14 @@
                             </p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route('student.my_calendar') }}" class="nav-link @if(Request::segment(2) == 'my-exams')active @endif">
+                            <i class="nav-icon fas fa-user-circle"></i>
+                            <p>
+                                My Calendar
+                            </p>
+                        </a>
+                    </li>
                 @elseif(Auth::user()->user_type == 'parent')
                     <li class="nav-item">
                         <a href="{{ route('parent.dashboard') }}" class="nav-link @if(Request::segment(2) == 'dashboard')active @endif">
