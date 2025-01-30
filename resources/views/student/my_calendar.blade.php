@@ -26,19 +26,7 @@
             </div><!-- /.container-fluid -->
         </section>
     </div>
-    {{--    <script src='{{asset('dist/fullcalendar/index.global.js')}}'></script>--}}
-    {{--    <script type="text/javascript">--}}
-    {{--        var calendarID = document.getElementById('calendar');--}}
-    {{--        var calendar = new FullCalendar.Calendar(calendarID, {--}}
-    {{--            initialView: 'dayGridMonth',--}}
-    {{--            headerToolbar: {--}}
-    {{--                left: 'prev,next today',--}}
-    {{--                center: 'title',--}}
-    {{--                right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'--}}
-    {{--            },--}}
-    {{--        });--}}
-    {{--        calendar.render();--}}
-    {{--    </script>--}}
+
 @endsection
 @section('script')
     <script src='{{asset('dist/fullcalendar/index.global.js')}}'></script>
